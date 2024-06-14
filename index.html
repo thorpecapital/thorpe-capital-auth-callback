@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OAuth Callback</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // Extract the authorization code from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const authCode = urlParams.get('code');
+        
+        // Redirect to the custom URL scheme of the app
+        if (authCode) {
+            window.location.href = `thorpecapital://callback?code=${authCode}`;
+        } else {
+            // Handle error case
+            document.body.innerHTML = 'Authorization failed or was cancelled.';
+        }
+    </script>
+</body>
+</html>
